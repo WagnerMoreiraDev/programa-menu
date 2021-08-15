@@ -1,16 +1,21 @@
-
 from time import sleep
+import os
+
+def screen_clear():   
+   # for mac and linux(here, os.name is 'posix')
+   if os.name == 'posix':
+      _ = os.system('clear')
+   else:
+      # for windows platfrom
+      _ = os.system('cls')   
+   
 
 print("-"*40)
 print("Seja bem vindo ao nosso menu interativo! ")
 print("-"*40)
-
-n1 = float(input("Digite o primeiro valor: "))
-n2 =float(input("Digite o segundo valor: "))
-
-opcao = 0
-
-while opcao != 8:
+while True:
+    n1 = float(input("Digite o primeiro valor: "))
+    n2 = float(input("Digite o segundo valor: "))
     print("""
     [1] somar,
     [2] subitrair,
@@ -47,15 +52,15 @@ while opcao != 8:
             maior = n2
             print(f"entre {n1} e {n2} o maior é {maior}")
     elif opcao == 7:
-        print('Informe os números novamente: ')
-    n1 = float(input("Digite o primeiro valor: "))
-    n2 = float(input("Digite o segundo valor: "))
-    if opcao >= 8:
+        print('Informe os números novamente: ')    
+    elif opcao >= 8:
             print("Saindo do programa, até logo!")
+            break
     else:
         print("Valor inválido, tente novamente!")
+    print("\n"*5)
+    input('Pressione "Enter" para continuar')
+    screen_clear()
 print("-"*30)
 sleep(1)
 print('Fim do programa, volte sempre!')
-
-
